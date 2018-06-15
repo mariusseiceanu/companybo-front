@@ -3,6 +3,10 @@
    [routerLinkActive]="'active'"
    style="cursor: pointer"
 >
-  <h4>{{ company.name }}</h4>
-  <p>{{ company.address }} {{ company.city }} {{ company.country }}</p>
+
+  <div class="row">
+    <div class="col-xs-6">{{ company.name }}</div>
+    <div class="col-xs-3">{{ company.city }}</div>
+    <div class="col-xs-3">{{ company.country }}</div>
+  </div>
 </a>

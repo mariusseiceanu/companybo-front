@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Company} from './company.model';
 import {HttpClient} from '@angular/common/http';
-import {ListResult} from '../shared/hateoas/list-result.interface';
-import {Subject} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -39,4 +39,13 @@ export class CompanyService {
     this.companies.splice(index, 1);
     this.companiesUpdated.next(this.getCompanies());
   }
+
+  search() {
+    let observable: Observable<Company[]>
+      = this.http.get<{ _embedded: { result: Company[] } }>
+        ('/api/companies')
+        .pipe(map((json) => json._embedded.result));
+    return observable;
+  }
+
 }
