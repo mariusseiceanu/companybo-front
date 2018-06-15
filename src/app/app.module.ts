@@ -12,6 +12,8 @@ import { CompanyEditComponent } from './companies/company-edit/company-edit.comp
 import { CompanyNotSelectedComponent } from './companies/company-not-selected/company-not-selected.component';
 import { CompanyListItemComponent } from './companies/company-list/company-list-item/company-list-item.component';
 import {HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {DropdownDirective} from './shared/dropdown.directive';
 
 @NgModule({
   declarations: [
@@ -23,12 +25,15 @@ import {HttpClientModule} from '@angular/common/http';
     CompanyDetailComponent,
     CompanyEditComponent,
     CompanyNotSelectedComponent,
-    CompanyListItemComponent
+    CompanyListItemComponent,
+    DropdownDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

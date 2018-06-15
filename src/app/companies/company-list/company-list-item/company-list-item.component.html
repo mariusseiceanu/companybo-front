@@ -1,8 +1,8 @@
 <a class="list-group-item clearfix"
-   [routerLink]="company.id"
+   [routerLink]="index"
    [routerLinkActive]="'active'"
    style="cursor: pointer"
 >
   <h4>{{ company.name }}</h4>
-  <p>{{ company.address }}</p>
+  <p>{{ company.address }} {{ company.city }} {{ company.country }}</p>
 </a>

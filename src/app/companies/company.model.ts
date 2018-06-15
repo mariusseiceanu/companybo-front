@@ -1,5 +1,4 @@
 export class Company {
-  public id: number;
   public name: string;
   public address: string;
   public city: string;
@@ -7,9 +6,7 @@ export class Company {
   public email: string;
   public phoneNumber: string;
 
-
-  constructor(id: number, name: string, address: string, city: string, country: string, email: string, phoneNumber: string) {
-    this.id = id;
+  constructor(name: string, address: string, city: string, country: string, email: string, phoneNumber: string) {
     this.name = name;
     this.address = address;
     this.city = city;
@@ -17,5 +14,4 @@ export class Company {
     this.email = email;
     this.phoneNumber = phoneNumber;
   }
-
 }

@@ -11,8 +11,8 @@ const appRoutes: Routes = [
   { path: '', redirectTo: '/companies', pathMatch: 'full'},
   { path: 'companies', component: CompaniesComponent, children: [
       { path: 'new', component: CompanyEditComponent },
-      { path: ':id', component: CompanyDetailComponent },
-      { path: ':id/edit', component: CompanyEditComponent },
+      { path: ':index', component: CompanyDetailComponent },
+      { path: ':index/edit', component: CompanyEditComponent },
       { path: '**', component: CompanyNotSelectedComponent }
     ]},
   { path: 'users', component: UsersComponent }

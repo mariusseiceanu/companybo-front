@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Company} from '../company.model';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import {CompanyService} from '../company.service';
 
 @Component({
@@ -10,20 +10,25 @@ import {CompanyService} from '../company.service';
 })
 export class CompanyDetailComponent implements OnInit {
   company: Company;
-  id: number;
+  index: number;
 
   constructor(private route: ActivatedRoute,
-              private compServ: CompanyService
+              private compServ: CompanyService,
+              private router: Router
   ) { }
 
   ngOnInit() {
     this.route.params
       .subscribe(
         (params: Params) => {
-          this.id = +params['id'];
-          this.company = this.compServ.getCompany(this.id);
+          this.index = +params['index'];
+          this.company = this.compServ.getCompany(this.index);
         }
       );
   }
 
+  onDelete() {
+    this.compServ.deleteCompany(this.index);
+    this.router.navigate(['..'], { relativeTo: this.route});
+  }
 }

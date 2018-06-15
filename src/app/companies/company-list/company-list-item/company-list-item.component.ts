@@ -8,6 +8,7 @@ import {Company} from '../../company.model';
 })
 export class CompanyListItemComponent implements OnInit {
   @Input() company: Company;
+  @Input() index: number;
 
   constructor() { }
 
