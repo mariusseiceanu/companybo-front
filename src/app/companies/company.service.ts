@@ -31,8 +31,13 @@ export class CompanyService {
   }
 
   addCompany(newCompany: Company) {
-    this.companies.push(newCompany);
-    this.companiesUpdated.next(this.getCompanies());
+    let observable: Observable<Company>
+      = this.http.post<Company>('/api/companies', newCompany);
+
+    observable.subscribe(company => {
+      this.companies.push(company);
+      this.companiesUpdated.next(this.getCompanies());
+    });
   }
 
   deleteCompany(index: number) {
@@ -45,7 +50,11 @@ export class CompanyService {
       = this.http.get<{ _embedded: { result: Company[] } }>
         ('/api/companies')
         .pipe(map((json) => json._embedded.result));
-    return observable;
+
+    observable.subscribe(companies => {
+      this.companies = companies;
+      this.companiesUpdated.next(this.getCompanies());
+    });
   }
 
 }

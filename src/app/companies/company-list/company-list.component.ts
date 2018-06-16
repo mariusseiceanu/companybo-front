@@ -24,9 +24,7 @@ export class CompanyListComponent implements OnInit, OnDestroy {
 
 
   onSearch() {
-    this.compServ.search().subscribe(companies => {
-      console.log(companies);
-    });
+    this.compServ.search();
   }
 
   ngOnDestroy() {
